@@ -1,0 +1,5 @@
+FastRNG.hx - fast Random Number Generator.
+	- flash only.
+	- 10x+ times faster than Math.random() (for flash).
+	- getUInt, getInt, getFloat, getBool, getIntBound, getIntBounds.
+	- fast reinitialization with UInt number.
