@@ -18,20 +18,28 @@
   #error
 #end
 
-class FastRNG{
+class FastRNG4{
+  static inline var Y:UInt = 842502087;
+  static inline var Z:UInt = 2000000000+1579807591;
+  //~ static inline var Z:UInt = 579807591;
+  static inline var W:UInt = 273326509;
+
   static inline var FLOAT_MULT = 1/4294967295;
   static inline var UINT_MULT = 4294967295;
 
+  var x:UInt;
+  var y:UInt;
+  var z:UInt;
   var w:UInt;
 
   public function new(?seed:UInt = 0){
     if(seed == 0)
       seed = newSeed();
-    init(seed);
     }
 
   public inline function getUInt():UInt{
-    var t:UInt = (w^(w<<11));
+    var t:UInt = (x^(x<<11));
+    x = y; y = z; z = w;
     return w = (w ^ (w >> 19))^(t ^ (t >> 8));
     }
 
@@ -56,7 +64,8 @@ class FastRNG{
     }
 
   public inline function init(seed:UInt){
-    w = seed;
+    x = seed;
+    y = Y; z = Z; w = W;
     }
 
   public static function newSeed():UInt{
