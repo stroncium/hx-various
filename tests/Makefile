@@ -1,4 +1,4 @@
-CPS= -cp /home/stron/my/lib/haxe
+CPS= -cp /home/stron/my/lib/haxe -cp ../
 SWFV= -swf-version 10
 
 all: test-fastrng

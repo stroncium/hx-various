@@ -24,7 +24,7 @@ class FastRNG4{
   //~ static inline var Z:UInt = 579807591;
   static inline var W:UInt = 273326509;
 
-  static inline var FLOAT_MULT = 1/4294967295;
+  static inline var FLOAT_MULT = 0.00000000046566128742;
   static inline var UINT_MULT = 4294967295;
 
   var x:UInt;
@@ -48,11 +48,15 @@ class FastRNG4{
     }
 
   public inline function getBoundInt(bound:Int){
-    return Std.int(bound*FLOAT_MULT*getUInt());
+    return getUInt() % bound;
     }
 
   public inline function getBoundsInt(lbound:Int, rbound:Int){
     return lbound+Std.int((rbound-lbound)*FLOAT_MULT*getUInt());
+    }
+
+  public inline function getBoundsFloat(lbound:Float, rbound:Float){
+    return lbound+((rbound-lbound)*FLOAT_MULT*getUInt());
     }
 
   public inline function getBool():Bool{

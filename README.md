@@ -4,7 +4,7 @@ FastRNG.hx - fast Random Number Generator.
 ----------
   + flash only.
   + ![Alert!][alert] ~15 times faster than Math.random() (for flash).
-  + getUInt, getInt, getFloat, getBool, getBoundInt, getBoundsInt.
+  + getUInt, getInt, getFloat, getBool, getBoundInt, getBoundsInt, getBoundFloat.
   + fast reinitialization with UInt number.
   + ![Alert!][alert] it's ~3.5 times faster to get a number(int, float, bounded int, 2-bounded int) from RNG than from Array.
 

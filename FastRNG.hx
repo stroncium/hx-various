@@ -19,7 +19,7 @@
 #end
 
 class FastRNG{
-  static inline var FLOAT_MULT = 1/4294967295;
+  static inline var FLOAT_MULT = 0.00000000046566128742;
   static inline var UINT_MULT = 4294967295;
 
   var w:UInt;
@@ -40,7 +40,11 @@ class FastRNG{
     }
 
   public inline function getBoundInt(bound:Int){
-    return Std.int(bound*FLOAT_MULT*getUInt());
+    return getUInt() % bound;
+    }
+
+  public inline function getBoundsFloat(lbound:Float, rbound:Float){
+    return lbound+((rbound-lbound)*FLOAT_MULT*getUInt());
     }
 
   public inline function getBoundsInt(lbound:Int, rbound:Int){
@@ -48,7 +52,7 @@ class FastRNG{
     }
 
   public inline function getBool():Bool{
-    return (getUInt() & 1) > 0;
+    return (getUInt() & 8) > 0;
     }
 
   public inline function getFloat():Float{
